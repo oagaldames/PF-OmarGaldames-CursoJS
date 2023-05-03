@@ -1,5 +1,12 @@
-# PreEntrega-1-Curso JavaScript CoderHouse
+# PreEntrega-2-Curso JavaScript CoderHouse
 # Alumno: Omar Galdames
-Se incluyen: variables, condicionales,bucles y funciones
+Se incluyen: 
+Estructura HTML del proyecto. 
+Variables de JS necesarias. 
+Funciones esenciales del proceso a simular.
+Objetos de JS.
+Arrays.
+Métodos de búsqueda y filtrado sobre el Array.
+
 
  
