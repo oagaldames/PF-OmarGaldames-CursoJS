@@ -2,43 +2,219 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRE ENTREGA 2</title>
+  <link href="./css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <title>Formulario Presupuestos</title>
 </head>
 
+
 <body>
-    <h3>El proyecto final seria una aplicacion para realizar presupuesto
-        de un trabajo, dividiendo los materiales y la mano de obra.
-    </h3>
-    <h4>Ingreso de los materiales que se van a utilizar para armar el presupuesto</h4>
-    <p>Se ingresa descripcion</p>
-    <p>Se ingresa el tipo de material (se deben cargar los validos que se indica en la ventana del prompt ya que se
-        realiza validacion del mismo)</p>
-    <p>Se ingresa el proveedor (se deben cargar los validos que se indica en la ventana del prompt ya que se realiza
-        validacion del mismo)</p>
-    <p>Se ingresa las unidades</p>
-    <p>Se ingresa el precio unitario</p>
-    <p>Se ingresa el % de Iva (se deben cargar los validos que se indica en la ventana del prompt ya que se realiza
-        validacion del mismo)</p>
-    <p>Una vez ingresados se realiza la validacion de todos los ingresos y se indica si alguno esta mal, teniendo que
-        volver a ingresar desde el comienzo</p>
-    <p>Para Seguir ingresando se pone S , sino sale del ingreso de materiales</p>
-    <h4> Ingresa las tareas a realizar para armar el presupuestoo</h4>
-    <p>Se ingresa descripcion de la tarea</p>
-    <p>Se ingresa el tipo de la tarea (se deben cargar los validos que se indica en la ventana del prompt ya que se
-        realiza validacion del mismo)</p>
-    <p>Se ingresan las horas hombre</p>
-    <p>Se ingresa el valor de la hora hombre</p>
-    <p>Para Seguir ingresando se pone S , sino sale del ingreso de tareas</p>
-    <p>Se ingresa el porcentaje de rentabilidad que se quiere tener (uno para materiales y uno para mano de obra)</p>
-    <p>Luego se sealizan los calculos el valor total del presupuesto</p>
-    <p>Se puede realizar un filtro de materiales por tipo o por proveedor</p>
-    <p>Se realizan validaciones de los valores ingresados</p>
-    <p>La salida de lo ingresado se envia a la consola</p>
-    <script src="./JS/clases.js"></script>
-    <script src="./JS/app.js"></script>
+  <div class="container">
+    <h1 class="text-center mb-4">Formulario de Presupuesto</h1>
+    <form>
+      <div class="form-group row">
+        <label for="numeroPresupuesto" class="col-sm-2 col-form-label">N° de Presupuesto:</label>
+        <div class="col-sm-3">
+          <div class="input-group">
+            <input type="text" class="form-control" id="numeroPresupuesto" readonly>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <button id="btnNuevo" class="btn btn-primary">Nuevo Presupuesto</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="container border p-4">
+    <h4 class="text-center text-light bg-info p-2">Materiales</h4>
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <label for="ingresarMaterial">Material</label>
+        <input type="text" class="form-control" id="ingresarMaterial" maxlength="30" placeholder="Ingrese el material">
+      </div>
+      <div class="col-sm-2">
+        <label for="selectProveedor">Proveedor</label>
+        <select class="form-control" id="selectProveedor">
+
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <label for="selectTipo">Tipo Material</label>
+        <select class="form-control" id="selectTipo">
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <label for="cantidad">Cantidad</label>
+        <input type="text" class="form-control" id="cantidad" placeholder="Ingrese Cantidad">
+      </div>
+      <div class="col-sm-2">
+        <label for="costo">Costo</label>
+        <input type="text" class="form-control" id="costo" placeholder="Costo">
+      </div>
+      <div class="col-sm-2">
+        <label for="selectIva">Tipo Iva</label>
+        <select class="form-control" id="selectIva" placeholder="% IVA">
+        </select>
+      </div>
+    </div>
+
+    <button id="btnAgregarMat" class="btn btn-primary">Agregar</button>
+
+    </form>
+    <div class="contenedor-tabla">
+      <table class="table mt-4 table-striped w-100" id="tablaMateriales">
+        <thead class="thead-dark">
+          <tr>
+            <th>Descripción</th>
+            <th>Proveedor</th>
+            <th>Tipo</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>% IVA</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="tablaItemMateriales">
+        </tbody>
+        <tfoot class="thead-dark">
+          <tr>
+            <td colspan="6" class="text-right">Total:</td>
+            <td id="totalPresupuestoMat"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button id="btnEliminarMat" type="submit" class="btn btn-primary mb-4">Eliminar Todos</button>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-3">
+        <div class="input-group">
+          <span class="input-group-text">% de Ganancia para los Materiales:</span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <input type="text" class="form-control" placeholder="% de ganancia" id="ganancia">
+      </div>
+      <div class="col-lg-3">
+        <div class="input-group">
+          <span class="input-group-text">Total Materiales con ganancia:</span>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <input type="text" class="form-control" id="total" readonly>
+      </div>
+      <div class="col-lg-1">
+        <button id="btnCalculoMat" type="button" class="btn btn-dark">Calcular</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4 mb-4 border p-4">
+    <h4 class="text-center text-light bg-info p-2">Mano de Obra</h4>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label for="selectTarea">Tarea</label>
+        <select class="form-control" id="selectTarea">
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <label for="horasHombre">Cantidad Horas</label>
+        <input type="text" class="form-control" id="horasHombre" placeholder="Cantidad de horas hombre">
+      </div>
+      <div class="col-sm-3">
+        <label for="costoMo">Costo Hora</label>
+        <input type="text" class="form-control" id="costoMo" placeholder="Ingrese Costo Hora">
+      </div>
+    </div>
+    <button id="btnAgregarMo" type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+    <div class="contenedor-tabla">
+      <table class="table mt-4 table-striped w-100" id="tablaMO">
+        <thead class="thead-dark">
+          <tr>
+            <th class="col-3">Tarea</th>
+            <th class="col-3">Cantidad Horas Hombre</th>
+            <th class="col-3">Costo Hora</th>
+            <th class="col-3">Total</th>
+          </tr>
+        </thead>
+        <tbody id="tablatemMo">
+        </tbody>
+        <tfoot class="thead-dark">
+          <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="col-3" id="totalPresupuestoMo"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button id="btnEliminarMo" type="submit" class="btn btn-primary mb-4">Eliminar Todos</button>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-3">
+        <div class="input-group">
+          <span class="input-group-text">% de Ganancia para la mano de obra:</span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <input type="text" class="form-control" placeholder="% de ganancia" id="gananciaMo">
+      </div>
+      <div class="col-lg-3">
+        <div class="input-group">
+          <span class="input-group-text">Total mano de obra con ganancia:</span>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <input type="text" class="form-control" id="totalMo" readonly>
+      </div>
+      <div class="col-lg-1">
+        <button id="btnCalculoMo" type="button" class="btn btn-dark">Calcular</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="text-center">
+      <button id="btnConfirmaPresupuesto" class="btn btn-primary mb-4">Confirmar Presupuesto</button>
+    </div>
+  </div>
+  <div class="container" id="containerResumen">
+    <div class="text-center">
+      <h3 class="text-light bg-info p-3">Resumen del Presupuesto<span id="numPresu"> </span></h3>
+      <div id="materialDatos" class="border p-4">
+        <p><strong>Costo Materiales :</strong> <span id="totalCostoProductos"></span></p>
+        <p><strong>% rentabilidad :</strong> <span id="rentabilidadProducto"></span></p>
+        <p><strong>Total Materiales :</strong> <span id="totalMateriales"></span></p>
+        <p><strong>Costo de mano de obra:</strong> <span id="totalCostoManoDeObra"></p>
+        <p><strong>% rentabilidad:</strong> <span id="rentabilidadManoDeObra"></span> </p>
+        <p><strong>Total mano de obra :</strong><span id="totalManoDeObra"></span></p>
+        <p><strong>Total iva:</strong> <span id="totalIva"></span></p>
+        <p><strong>TOTAL PRESUPUESTO :</strong><span id="totalPresupuesto"></span></p>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./JS/models/ManoObra.js"></script>
+<script src="./JS/models/Materiales.js"></script>
+<script src="./JS/models/Proveedor.js"></script>
+<script src="./JS/models/TipoIva.js"></script>
+<script src="./JS/models/Tipos.js"></script>
+<script src="./JS/getElementosDom.js"></script>
+<script src="./JS/cargaData.js"></script>
+<script src="./JS/funcionesMateriales.js"></script>
+<script src="./JS/funcionesManoDeObra.js"></script>
+<script src="./JS/funcionesResumen.js"></script>
+<script src="./JS/mainDom.js"></script>
 </body>
 
 </html>
