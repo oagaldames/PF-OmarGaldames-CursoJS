@@ -16,7 +16,7 @@ Se encuentran en la carpeta Data.
 	que se envió, si no existe se inicia con 1.
 - **Campo descripción:**
 	Se puede cargar la descripción del presupuesto. No es obligatoria.
-- **Botón Limpiar Presupuesto **
+- **Botón Limpiar Presupuesto**
 	Sirve para eliminar todos los datos que se encuentren ingresados , si uno 
 	lo desea
 #### Sección Materiales:
@@ -27,19 +27,19 @@ Se encuentran en la carpeta Data.
 	Se selecciona del menú desplegable el nombre del proveedor.
 - **Tipo Material:**
 	Se selecciona del menú desplegable el tipo del material.
--** Cantidad:**
+- **Cantidad:**
 	Se ingresa la cantidad. Realiza validación, no puede ser letras, blanco ni negativo.
 - **Costo:**
 	Se ingresa precio costo. Realiza validación, no puede ser letras, blanco ni negativo.
 - **Iva :**
 	Se selecciona del menu desplegable el % de Iva.
-**- Botón Agregar**
+- **Botón Agregar:**
 	Si los datos ingresados son válidos se habilita el botón , haciendo click en 
 	el mismo se agrega y se visualiza en la tabla en donde se calcula el total de 
 	ese ítem.
 	Si el texto de material, proveedor y tipo coinciden (deben coincidir los 3) con uno que ya se encuentre cargado, se suma a la  
 	cantidad anterior la cantidad que se ingrese y se actualiza el costo y el %de Iva y el total.
-- **Botón Eliminar en el ítem**
+- **Botón Eliminar en el ítem:**
 	Permite elimitar el ítem cargado.Pide confirmación para realizarlo.
 - **Botón Eliminar Todos:**
 	Si hay datos cargados de materiales elimina a todos. Pide confirmación para realizarlo.
@@ -59,24 +59,24 @@ Se encuentran en la carpeta Data.
 	Realiza validación, no puede ser letras, blanco ni negativo.
 - **Iva :**
 	Se selecciona del menú desplegable el % de Iva.
-- **Botón Agregar**
+- **Botón Agregar:**
 	Si los datos ingresados son validos se habilita el botón , haciendo click en 	el mismo se agrega y se visualiza en la tabla en 
 	donde se calcula el total de dicho item.
 	Si la tarea coincide con una que ya se encuentre cargada, se suma a la 
 	cantidad anterior la cantidad que se ingrese y se actualiza el costo y el % 	de Iva y el total.
-- **Botón Eliminar en el Item**
+- **Botón Eliminar en el Item:**
 	Permite elimitar el ítem cargado.
 	Pide confirmación para realizarlo.
 - **Botón Eliminar Todos**:
 	Si hay datos cargados de mano de obra elimina a todos.
 	Pide confirmación para realizarlo.
-- ** % de Ganancia para la Mano de Obra:**
+- **% de Ganancia para la Mano de Obra:**
 	Se ingresa el % de ganacia deseado para la mano de obra.
 	Realiza validación, no puede ser letras, blanco ni negativo.
 - **Botón Calcular:**
 	Realiza el cálculo aplicando el % de ganacia ingresado.
 #### Confirmación y envío :
--** Botón Confirmar**
+- **Botón Confirmar:**
 	Si hay por lo menos un item de mano de obra o de materiales se habilita 
 	en botón confirmar.
 	Cuando se hace click en el mismo, los datos de ítems de materiales , ítems 
@@ -85,7 +85,7 @@ Se encuentran en la carpeta Data.
 	se sale y se vuelve a ingresar a la pagina se levantan dichos datos y se 
 	carga el formulario , pudiendo seguir trabajando con el mismo.
 	Se visualiza el resúmen del presupuesto con los datos totalizados.
--** Botón Enviar.**
+- **Botón Enviar:**
 	Se simula el envío de los datos del presupuesto a un servidor utilizando 
 	Post , primero se envia los datos de presupuestoHeader, si ese envío se
 	realiza corectamente se realiza el envío de presupuestositems, en ambos 
