@@ -7,7 +7,8 @@ Se puede ingresar la ganacia para los materiales y para la mano de obra en forma
 Cuando se confirma se visualiza el resumen del presupuesto.
 Luego de confirmar se realiza el envio al servidor del mismo.
 #### Datos:
-Utiliza los datos desde archivos Json locales para la carga de las lista desplegables de proveedores, tipo de material, iva y tarea , simulando que se trae de un servidor.
+Utiliza los datos desde archivos Json locales para la carga de las lista desplegables de proveedores, tipo de material, iva y tarea , 
+simulando que se trae de un servidor.
 Se encuentran en la carpeta Data.
 #### Uso:
 - **Número de presupuesto:**
@@ -36,7 +37,8 @@ Se encuentran en la carpeta Data.
 	Si los datos ingresados son válidos se habilita el botón , haciendo click en 
 	el mismo se agrega y se visualiza en la tabla en donde se calcula el total de 
 	ese ítem.
-	Si el texto de material, proveedor y tipo coinciden (deben coincidir los 3) con uno que ya se encuentre cargado, se suma a la cantidad anterior la cantidad que se ingrese y se actualiza el costo y el %de Iva y el total.
+	Si el texto de material, proveedor y tipo coinciden (deben coincidir los 3) con uno que ya se encuentre cargado, se suma a la  
+	cantidad anterior la cantidad que se ingrese y se actualiza el costo y el %de Iva y el total.
 - **Botón Eliminar en el ítem**
 	Permite elimitar el ítem cargado.Pide confirmación para realizarlo.
 - **Botón Eliminar Todos:**
@@ -46,7 +48,7 @@ Se encuentran en la carpeta Data.
 	Realiza validación, no puede ser letras, blanco ni negativo.
 - **Botón Calcular:**
 	Realiza el calculo aplicando el % de ganacia ingresado.
-####Sección Mano de Obra :
+#### Sección Mano de Obra :
 - **Tarea:**
 	Se selecciona del menu desplegable la tarea.
 - **Cantidad horas:**
@@ -58,7 +60,8 @@ Se encuentran en la carpeta Data.
 - **Iva :**
 	Se selecciona del menú desplegable el % de Iva.
 - **Botón Agregar**
-	Si los datos ingresados son validos se habilita el botón , haciendo click en 	el mismo se agrega y se visualiza en la tabla en donde se calcula el total 			de dicho item.
+	Si los datos ingresados son validos se habilita el botón , haciendo click en 	el mismo se agrega y se visualiza en la tabla en 
+	donde se calcula el total de dicho item.
 	Si la tarea coincide con una que ya se encuentre cargada, se suma a la 
 	cantidad anterior la cantidad que se ingrese y se actualiza el costo y el % 	de Iva y el total.
 - **Botón Eliminar en el Item**
@@ -72,7 +75,7 @@ Se encuentran en la carpeta Data.
 	Realiza validación, no puede ser letras, blanco ni negativo.
 - **Botón Calcular:**
 	Realiza el cálculo aplicando el % de ganacia ingresado.
-####Confirmación y envío :
+#### Confirmación y envío :
 -** Botón Confirmar**
 	Si hay por lo menos un item de mano de obra o de materiales se habilita 
 	en botón confirmar.
