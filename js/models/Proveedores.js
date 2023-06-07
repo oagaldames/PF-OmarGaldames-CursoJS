@@ -1,4 +1,4 @@
-class Proveedor {
+class Proveedores {
     constructor(id, nombre,valor) {
         this.id = id;
         this.nombre = nombre;

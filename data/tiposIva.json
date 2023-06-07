@@ -1,0 +1,6 @@
+[
+    {"id": 1,"nombre": "IVA Exento","valor": 0},
+    {"id": 2,"nombre": "IVA 10.5%","valor": 10.5},
+    {"id": 3,"nombre": "IVA 21%","valor": 21},
+    {"id": 4,"nombre": "IVA 27%","valor": 27}
+]

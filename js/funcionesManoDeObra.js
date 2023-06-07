@@ -1,4 +1,4 @@
-/// funciones Seccion Mano de Obra
+/// Funciones Seccion Mano de Obra
 function actualizarTablaMo() {
     tablaitemsMo.innerHTML = "";
     itemsManoDeObra.length || btnEliminarMo.setAttribute("disabled", true);
@@ -9,7 +9,9 @@ function actualizarTablaMo() {
     CalcularTotalMoConGanancia();
     limpiarCamposMo();
     habilitaBtnConfirma();
+    habilitaBtnAlmacena();
 }
+
 function habilitaBtnAgregarMo() {
     if (+horasHombreInput.value && +costoMoInput.value) {
         btnAgregarMo.removeAttribute("disabled");
@@ -22,16 +24,25 @@ function insertarNuevoMo() {
     const moIngresado = new ManoDeObra(
         selectTarea.options[selectTarea.selectedIndex].text,
         horasHombreInput.value,
-        costoMoInput.value
+        costoMoInput.value,
+        selectIvaMo.value,
     );
+    //Verifico si existe actualizo, sumo la cantidad anterior a la ingresada
+    //si cambio el costo y el % de iva tambien se actualiza
     const indexItems = itemsManoDeObra.findIndex((item) => {
         return (
             item.descripcion === selectTarea.options[selectTarea.selectedIndex].text
         );
     });
     if (indexItems != -1) {
-        itemsManoDeObra[indexItems].cantidad =
-            +itemsManoDeObra[indexItems].cantidad + +moIngresado.cantidad;
+        const itemManoDeObra = itemsManoDeObra[indexItems];
+        const { cantidad, precioHora, porcentajeIva } = moIngresado;
+        itemManoDeObra.cantidad = parseInt(itemManoDeObra.cantidad, 10) || 0; 
+        itemManoDeObra.cantidad += parseInt(cantidad, 10);
+        itemManoDeObra.precioHora = precioHora;
+        itemManoDeObra.porcentajeIva = porcentajeIva;
+        itemManoDeObra.calcularIva();
+        itemManoDeObra.calcularTotalItem(); 
     } else {
         itemsManoDeObra.push(moIngresado);
     }
@@ -41,26 +52,23 @@ function agregarFilaMo(data) {
     const row = document.createElement("tr");
     let td = document.createElement("td");
     const indexTabla = itemsManoDeObra.indexOf(data);
-
     td.textContent = data.descripcion;
     row.appendChild(td);
-
     td = document.createElement("td");
     td.textContent = data.cantidad;
     row.appendChild(td);
-
     td = document.createElement("td");
     td.textContent = data.precioHora;
     row.appendChild(td);
-
+    td = document.createElement("td");
+    td.textContent = data.porcentajeIva;
+    row.appendChild(td);
     td = document.createElement("td");
     td.textContent = data.precioTotal;
     row.appendChild(td);
-
     const btnEliminarItem = document.createElement("button");
     btnEliminarItem.className = "btn btn-danger";
     btnEliminarItem.textContent = "Eliminar";
-
     btnEliminarItem.onclick = () => {
         Swal.fire({
             title:
@@ -70,6 +78,7 @@ function agregarFilaMo(data) {
             confirmButtonText: "Si",
             showCancelButton: true,
             cancelButtonText: "No",
+            icon: "question",
         }).then((resultado) => {
             if (resultado.isConfirmed) {
                 itemsManoDeObra.splice(indexTabla, 1);
@@ -85,7 +94,6 @@ function agregarFilaMo(data) {
             }
         });
     };
-
     td = document.createElement("td");
     td.appendChild(btnEliminarItem);
     row.appendChild(td);
@@ -113,6 +121,7 @@ function eliminarTodosItemsMo() {
         confirmButtonText: "Si",
         showCancelButton: true,
         cancelButtonText: "No",
+        icon: "question",
     }).then((resultado) => {
         if (resultado.isConfirmed) {
             itemsManoDeObra = [];

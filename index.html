@@ -20,22 +20,50 @@
 
 
 <body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Sistema de Presupuestos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto"> 
+          <li class="nav-item active">
+            <a class="nav-link" href="./Index.html">Presupuestar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Consultas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Datos</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
   <div class="container">
     <h1 class="text-center mb-4">Formulario de Presupuesto</h1>
     <form>
       <div class="form-group row">
         <label for="numeroPresupuesto" class="col-sm-2 col-form-label">N° de Presupuesto:</label>
-        <div class="col-sm-3">
+        <div class="col-sm-1">
           <div class="input-group">
             <input type="text" class="form-control" id="numeroPresupuesto" readonly>
           </div>
         </div>
-        <div class="col-sm-4">
-          <button id="btnNuevo" class="btn btn-primary">Nuevo Presupuesto</button>
+        <label for="descripcionPresupuesto" class="col-sm-1 col-form-label">Descripción:</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input type="text" class="form-control" id="descripcionPresupuesto">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <button id="btnLimpiarFormulario" class="btn btn-primary">Limpiar Formulario</button>
         </div>
       </div>
     </form>
-
+    
+  </header>
   </div>
   <div class="container border p-4">
     <h4 class="text-center text-light bg-info p-2">Materiales</h4>
@@ -64,7 +92,7 @@
         <input type="text" class="form-control" id="costo" placeholder="Costo">
       </div>
       <div class="col-sm-2">
-        <label for="selectIva">Tipo Iva</label>
+        <label for="selectIva">Iva</label>
         <select class="form-control" id="selectIva" placeholder="% IVA">
         </select>
       </div>
@@ -136,6 +164,11 @@
         <label for="costoMo">Costo Hora</label>
         <input type="text" class="form-control" id="costoMo" placeholder="Ingrese Costo Hora">
       </div>
+      <div class="col-sm-2">
+        <label for="selectIvaMo">Iva</label>
+        <select class="form-control" id="selectIvaMo" placeholder="% IVA">
+        </select>
+      </div>
     </div>
     <button id="btnAgregarMo" type="submit" class="btn btn-primary">Agregar</button>
     </form>
@@ -145,16 +178,17 @@
           <tr>
             <th class="col-3">Tarea</th>
             <th class="col-3">Cantidad Horas Hombre</th>
-            <th class="col-3">Costo Hora</th>
-            <th class="col-3">Total</th>
+            <th class="col-2">Costo Hora</th>
+            <th class="col-2">% IVA</th>
+            <th class="col-2">Total</th>
           </tr>
         </thead>
         <tbody id="tablatemMo">
         </tbody>
         <tfoot class="thead-dark">
           <tr>
-            <td colspan="3" class="text-right">Total:</td>
-            <td class="col-3" id="totalPresupuestoMo"></td>
+            <td colspan="6" class="text-right">Total:</td>
+            <td id="totalPresupuestoMo"></td>
           </tr>
         </tfoot>
       </table>
@@ -183,22 +217,28 @@
     </div>
   </div>
   <div class="container">
-    <div class="text-center">
-      <button id="btnConfirmaPresupuesto" class="btn btn-primary mb-4">Confirmar Presupuesto</button>
+    <div class="row justify-content-center text-center">
+      <div class="col-sm-3">
+        <button id="btnConfirmaPresupuesto" class="btn btn-primary btn-block mb-4">Confirmar</button>
+      </div>
+      <div class="col-sm-3">
+        <button id="btnAlmacenaPresupuesto" class="btn btn-primary btn-block mb-4">Enviar</button>
+      </div>
     </div>
+    
   </div>
   <div class="container" id="containerResumen">
     <div class="text-center">
       <h3 class="text-light bg-info p-3">Resumen del Presupuesto<span id="numPresu"> </span></h3>
       <div id="materialDatos" class="border p-4">
-        <p><strong>Costo Materiales :</strong> <span id="totalCostoProductos"></span></p>
-        <p><strong>% rentabilidad :</strong> <span id="rentabilidadProducto"></span></p>
-        <p><strong>Total Materiales :</strong> <span id="totalMateriales"></span></p>
-        <p><strong>Costo de mano de obra:</strong> <span id="totalCostoManoDeObra"></p>
-        <p><strong>% rentabilidad:</strong> <span id="rentabilidadManoDeObra"></span> </p>
-        <p><strong>Total mano de obra :</strong><span id="totalManoDeObra"></span></p>
-        <p><strong>Total iva:</strong> <span id="totalIva"></span></p>
-        <p><strong>TOTAL PRESUPUESTO :</strong><span id="totalPresupuesto"></span></p>
+        <p>Costo Materiales : $ <span id="totalCostoProductos"></span></p>
+        <p>% rentabilidad : $ <span id="rentabilidadProducto"></span></p>
+        <p>Total Materiales : $ <span id="totalMateriales"></span></p>
+        <p>Costo de mano de obra: $ <span id="totalCostoManoDeObra"></p>
+        <p>% rentabilidad : $ <span id="rentabilidadManoDeObra"></span></p>
+        <p>Total mano de obra : $ <span id="totalManoDeObra"></span></p>
+        <p>Total iva : $ <span id="totalIva"></span></p>
+        <h3>TOTAL PRESUPUESTO : $ <span id="totalPresupuesto"></span></h3>
       </div>
     </div>
   </div>
@@ -206,9 +246,12 @@
 <script src="./js/sweetalert2.min.js"></script>
 <script src="./JS/models/ManoObra.js"></script>
 <script src="./JS/models/Materiales.js"></script>
-<script src="./JS/models/Proveedor.js"></script>
-<script src="./JS/models/TipoIva.js"></script>
-<script src="./JS/models/Tipos.js"></script>
+<script src="./JS/models/PresupuestoHeader.js"></script>
+<script src="./JS/models/PresupuestoItems.js"></script>
+<script src="./JS/models/Proveedores.js"></script>
+<script src="./JS/models/TiposIva.js"></script>
+<script src="./JS/models/TiposMateriales.js"></script>
+<script src="./JS/models/TiposTareas.js"></script>
 <script src="./JS/getElementosDom.js"></script>
 <script src="./JS/cargaData.js"></script>
 <script src="./JS/funcionesMateriales.js"></script>

@@ -1,6 +1,8 @@
-
+// Lectura de elementos del DOM de la primer seccion del presupuesto
 const numeroPresupuesto = document.getElementById("numeroPresupuesto");
-const btnNuevo = document.getElementById("btnNuevo");
+const descripcionPresupuesto = document.getElementById("descripcionPresupuesto");
+const btnLimpiarFormulario = document.getElementById("btnLimpiarFormulario");
+
 // Lectura de elementos del DOM en la primera sección de Materiales
 const ingresarMaterialInput = document.getElementById("ingresarMaterial");
 const selectProveedor = document.getElementById("selectProveedor");
@@ -22,6 +24,7 @@ const btnCalculoMat = document.getElementById("btnCalculoMat");
 const selectTarea = document.getElementById("selectTarea");
 const horasHombreInput = document.getElementById("horasHombre");
 const costoMoInput = document.getElementById("costoMo");
+const selectIvaMo = document.getElementById("selectIvaMo");
 const btnAgregarMo = document.getElementById("btnAgregarMo");
 
 // Lectura de elementos del DOM en la tabla de Mano de Obra
@@ -36,6 +39,7 @@ const btnCalculoMo = document.getElementById("btnCalculoMo");
 // Lectura de elementos del DOM en la sección de Resumen del Presupuesto
 const containerResumen = document.getElementById("containerResumen");
 const btnConfirmaPresupuesto = document.getElementById("btnConfirmaPresupuesto");
+const btnAlmacenaPresupuesto = document.getElementById("btnAlmacenaPresupuesto");
 const totalCostoProductos = document.getElementById("totalCostoProductos");
 const rentabilidadProducto = document.getElementById("rentabilidadProducto");
 const totalMateriales = document.getElementById("totalMateriales");
@@ -48,3 +52,4 @@ const totalPresupuesto = document.getElementById("totalPresupuesto");
 
 let itemsMateriales = [];
 let itemsManoDeObra = [];
+

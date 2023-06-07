@@ -1,0 +1,7 @@
+[
+    {"id": 1,"nombre": "Ingeniería","valor": 1},
+    {"id": 2,"nombre": "Eléctrica","valor": 2},
+    {"id": 3,"nombre": "Mecánica","valor": 3},
+    {"id": 4,"nombre": "Programación","valor": 4},
+    {"id": 5,"nombre": "Arquitectura","valor": 5}
+]

@@ -1,2 +1,2 @@
-# PreEntrega-3-Curso JavaScript CoderHouse
+# PROYECTO FINAL-Curso JavaScript CoderHouse
 # Alumno: Omar Galdames

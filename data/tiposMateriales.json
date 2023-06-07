@@ -1,0 +1,6 @@
+[
+    {"id": 1,"nombre": "Eléctrico","valor": 1},
+    {"id": 2,"nombre": "Neumático","valor": 2},
+    {"id": 3,"nombre": "Control","valor": 3},
+    {"id": 4,"nombre": "Fluidos","valor": 4}
+]

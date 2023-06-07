@@ -1,4 +1,4 @@
-/// funciones Seccion Materiales
+/// Funciones Seccion Materiales
 function actualizarTablaMateriales() {
   tablaItemMateriales.innerHTML = "";
   itemsMateriales.length || btnEliminarMat.setAttribute("disabled", true);
@@ -9,9 +9,11 @@ function actualizarTablaMateriales() {
   CalcularTotalConGanancia();
   limpiarCamposMateriales();
   habilitaBtnConfirma();
+  habilitaBtnAlmacena();
 }
 
 function insertarNuevoMaterial() {
+  let indexItems=-1;
   const materialIngresado = new Materiales(
     ingresarMaterialInput.value,
     selectProveedor.options[selectProveedor.selectedIndex].text,
@@ -20,15 +22,25 @@ function insertarNuevoMaterial() {
     costoInput.value,
     selectIva.value
   );
-  const indexItems = itemsMateriales.findIndex((item) => {
+    //Verifico si esxite el material con el mismo proveedor y tipo ,
+    //si existe actualizo sumo la cantidad anterior a la ingresada
+    //si cambio el costo y el % de iva tambien se actualiza
+  indexItems = itemsMateriales.findIndex((item) => {
     return (
       item.descripcion === materialIngresado.descripcion &&
-      item.proveedor === materialIngresado.proveedor
+      item.proveedor === materialIngresado.proveedor &&
+      item.tipo === materialIngresado.tipo
     );
   });
   if (indexItems != -1) {
-    itemsMateriales[indexItems].cantidad =
-      +itemsMateriales[indexItems].cantidad + +materialIngresado.cantidad;
+    
+    const itemMaterial = itemsMateriales[indexItems];const { cantidad, precio, porcentajeIva } = materialIngresado;
+    itemMaterial.cantidad = parseInt(itemMaterial.cantidad, 10) || 0; 
+    itemMaterial.cantidad += parseInt(cantidad, 10);
+    itemMaterial.precio = precio;
+    itemMaterial.porcentajeIva = porcentajeIva;
+    itemMaterial.calcularIva();
+    itemMaterial.calcularPrecioTotal(); 
   } else {
     itemsMateriales.push(materialIngresado);
   }
@@ -38,38 +50,29 @@ function agregarFilaMateriales(data) {
   const row = document.createElement("tr");
   let td = document.createElement("td");
   const indexTabla = itemsMateriales.indexOf(data);
-
   td.textContent = data.descripcion;
   row.appendChild(td);
-
   td = document.createElement("td");
   td.textContent = data.proveedor;
   row.appendChild(td);
-
   td = document.createElement("td");
   td.textContent = data.tipo;
   row.appendChild(td);
-
   td = document.createElement("td");
   td.textContent = data.cantidad;
   row.appendChild(td);
-
   td = document.createElement("td");
   td.textContent = data.precio;
   row.appendChild(td);
-
   td = document.createElement("td");
   td.textContent = data.porcentajeIva;
   row.appendChild(td);
-
   td = document.createElement("td");
   td.textContent = data.precioTotal;
   row.appendChild(td);
-
   const btnEliminar = document.createElement("button");
   btnEliminar.className = "btn btn-danger";
   btnEliminar.textContent = "Eliminar";
-
   btnEliminar.onclick = () => {
     Swal.fire({
       title:
@@ -77,6 +80,7 @@ function agregarFilaMateriales(data) {
       confirmButtonText: "Si",
       showCancelButton: true,
       cancelButtonText: "No",
+      icon: "question",
     }).then((resultado) => {
       if (resultado.isConfirmed) {
         itemsMateriales.splice(indexTabla, 1);
@@ -92,7 +96,6 @@ function agregarFilaMateriales(data) {
       }
     });
   };
-
   td = document.createElement("td");
   td.appendChild(btnEliminar);
   row.appendChild(td);
@@ -123,6 +126,7 @@ function eliminarTodosItemsMateriales() {
     confirmButtonText: "Si",
     showCancelButton: true,
     cancelButtonText: "No",
+    icon: "question",
   }).then((resultado) => {
     if (resultado.isConfirmed) {
       itemsMateriales = [];
